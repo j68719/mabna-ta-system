@@ -1,0 +1,576 @@
+/* TA System Styles */
+:root {
+    --ta-primary:   #E85A24;
+    --ta-primary-dark: #C74A1B;
+    --ta-success:   #00b894;
+    --ta-danger:    #d63031;
+    --ta-warning:   #fdcb6e;
+    --ta-info:      #0984e3;
+    --ta-gray:      #636e72;
+    --ta-light:     #f5f6fa;
+    --ta-border:    #dfe6e9;
+    --ta-radius:    8px;
+    --ta-shadow:    0 2px 12px rgba(0,0,0,0.08);
+
+    /* ── Shared admin palette (used by ta-admin.css and, gradually, by the
+         admin screens themselves instead of one-off hex codes per file) ── */
+    --ta-adm-indigo:  #6366f1;
+    --ta-adm-purple:  #8b5cf6;
+    --ta-adm-blue:    #3b82f6;
+    --ta-adm-green:   #10b981;
+    --ta-adm-red:     #ef4444;
+    --ta-adm-amber:   #f59e0b;
+    --ta-adm-orange:  #f97316;
+    --ta-adm-gray-50:  #f9fafb;
+    --ta-adm-gray-100: #f3f4f6;
+    --ta-adm-gray-200: #e5e7eb;
+    --ta-adm-gray-400: #9ca3af;
+    --ta-adm-gray-500: #6b7280;
+    --ta-adm-gray-700: #374151;
+    --ta-adm-gray-900: #111827;
+}
+
+
+.ta-form-edit-mode {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    padding: 15px;
+    border-radius: 8px;
+    animation: ta-shake 0.5s;
+}
+
+@keyframes ta-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+
+
+
+
+
+
+/* ── Widget ──────────────────────────────────────────────────────────────── */
+.ta-widget {
+    direction: rtl;
+    font-family: inherit;
+    background: #fff;
+    border: 2px solid var(--ta-border);
+    border-radius: var(--ta-radius);
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.ta-widget-header h3 {
+    margin: 0 0 20px;
+    font-size: 1.2rem;
+    color: #2d3436;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.ta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background-color .15s ease, box-shadow .15s ease, transform .15s ease, filter .15s ease, opacity .15s ease;
+    background: var(--ta-primary);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    margin-left: 8px;
+    vertical-align: middle;
+}
+.ta-btn:last-child { margin-left: 0; }
+.ta-btn:hover {
+    filter: brightness(0.94);
+    box-shadow: 0 4px 10px rgba(0,0,0,.12);
+    transform: translateY(-1px);
+    color: #fff;
+}
+.ta-btn:active {
+    filter: brightness(0.88);
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    transform: translateY(0);
+}
+.ta-btn:focus-visible {
+    outline: 2px solid var(--ta-primary);
+    outline-offset: 2px;
+}
+.ta-btn:disabled,
+.ta-btn.ta-btn-disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    filter: none;
+}
+
+.ta-btn-primary   { background: var(--ta-primary); color: #fff; }
+.ta-btn-success   { background: var(--ta-success); color: #fff; }
+.ta-btn-danger    { background: var(--ta-danger);  color: #fff; }
+.ta-btn-secondary { background: var(--ta-info);    color: #fff; }
+.ta-btn-warning   { background: var(--ta-warning); color: #7a4a00; }
+.ta-btn-cancel    { background: var(--ta-gray);    color: #fff; }
+.ta-btn-edit-mode { background: #fb923c !important; color: #fff; }
+
+/* Outline variant — lighter footprint for secondary actions */
+.ta-btn-outline {
+    background: transparent;
+    color: var(--ta-primary);
+    border-color: var(--ta-primary);
+    box-shadow: none;
+}
+.ta-btn-outline:hover {
+    background: rgba(232, 90, 36, .08);
+    box-shadow: none;
+    color: var(--ta-primary);
+}
+
+/* Size scale */
+.ta-btn-xs { padding: 4px 10px;  font-size: 11.5px; border-radius: 6px; gap: 4px; }
+.ta-btn-sm { padding: 6px 13px;  font-size: 12.5px; border-radius: 7px; }
+.ta-btn-lg { padding: 11px 24px; font-size: 15px;   border-radius: 9px; }
+
+/* Full-width helper — use instead of inline style="width:100%" */
+.ta-btn-block { display: flex; width: 100%; margin-left: 0; }
+
+/* دکمه ورود به گروه — مستقل از استایل قالب و مناسب تمام جریان‌های انتخاب استادیار */
+.ta-widget .ta-group-entry-btn,
+.ta-message .ta-group-entry-btn,
+.ta-group-entry-btn {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    min-height: 46px !important;
+    padding: 11px 22px !important;
+    border: 1px solid rgba(255,255,255,.28) !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 52%, #9333ea 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 8px 18px rgba(79,70,229,.24), inset 0 1px 0 rgba(255,255,255,.22) !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease !important;
+}
+.ta-widget .ta-group-entry-btn::before,
+.ta-message .ta-group-entry-btn::before,
+.ta-group-entry-btn::before { content: '↗'; font-size: 18px; line-height: 1; }
+.ta-widget .ta-group-entry-btn:hover,
+.ta-message .ta-group-entry-btn:hover,
+.ta-group-entry-btn:hover {
+    color: #fff !important;
+    filter: brightness(1.08) saturate(1.08) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 24px rgba(79,70,229,.34), inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
+.ta-widget .ta-group-entry-btn:active,
+.ta-message .ta-group-entry-btn:active,
+.ta-group-entry-btn:active { transform: translateY(0) !important; box-shadow: 0 5px 12px rgba(79,70,229,.24) !important; }
+.ta-widget .ta-group-entry-btn:focus-visible,
+.ta-message .ta-group-entry-btn:focus-visible,
+.ta-group-entry-btn:focus-visible { outline: 3px solid rgba(129,140,248,.55) !important; outline-offset: 3px !important; }
+@media (max-width: 520px) {
+    .ta-widget .ta-group-entry-btn,
+    .ta-message .ta-group-entry-btn,
+    .ta-group-entry-btn { width: 100% !important; min-height: 48px !important; }
+}
+
+/* ── Inputs ──────────────────────────────────────────────────────────────── */
+.ta-select, .ta-input {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--ta-border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    direction: rtl;
+}
+.ta-select:focus, .ta-input:focus {
+    outline: none;
+    border-color: var(--ta-primary);
+}
+
+/* ── Messages ────────────────────────────────────────────────────────────── */
+.ta-message {
+    padding: 14px 16px;
+    border-radius: var(--ta-radius);
+    margin: 12px 0;
+}
+.ta-message-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.ta-message-error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.ta-message-info    { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+.ta-message-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+/* ── Field Groups ────────────────────────────────────────────────────────── */
+.ta-field-group {
+    margin-bottom: 16px;
+}
+.ta-field-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #2d3436;
+}
+.ta-field-group small {
+    display: block;
+    color: var(--ta-gray);
+    font-size: 0.82rem;
+    margin-top: 4px;
+}
+
+/* ── TA Cards (list) ─────────────────────────────────────────────────────── */
+.ta-ta-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--ta-light);
+    border: 1.5px solid var(--ta-border);
+    border-radius: var(--ta-radius);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+.ta-ta-card:hover { border-color: var(--ta-primary); }
+.ta-ta-card-name { font-weight: 600; font-size: 1rem; }
+.ta-ta-card-info { font-size: 0.82rem; color: var(--ta-gray); margin-top: 4px; }
+
+/* ── Loading ─────────────────────────────────────────────────────────────── */
+.ta-loading {
+    text-align: center;
+    padding: 20px;
+    color: var(--ta-gray);
+    font-size: 1rem;
+}
+
+/* ── Steps ───────────────────────────────────────────────────────────────── */
+.ta-step { padding: 8px 0; }
+
+/* ── Dashboard ───────────────────────────────────────────────────────────── */
+.ta-dashboard {
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: inherit;
+}
+.ta-dashboard-header h2 {
+    border-bottom: 2px solid var(--ta-border);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.ta-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--ta-border);
+    padding-bottom: 0;
+}
+.ta-tab {
+    padding: 10px 18px;
+    border-radius: 6px 6px 0 0;
+    color: var(--ta-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    background: var(--ta-light);
+}
+.ta-tab-active {
+    background: var(--ta-primary);
+    color: #fff;
+}
+
+.ta-section { margin-bottom: 32px; }
+.ta-section h3 { border-right: 4px solid var(--ta-primary); padding-right: 10px; }
+
+/* ── Cards Grid ──────────────────────────────────────────────────────────── */
+.ta-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.ta-card {
+    background: var(--ta-light);
+    border: 1.5px solid var(--ta-border);
+    border-radius: var(--ta-radius);
+    padding: 20px;
+    text-align: center;
+}
+.ta-card h4 { margin: 0 0 8px; font-size: 0.85rem; color: var(--ta-gray); }
+.ta-card p  { margin: 0; font-size: 1.4rem; font-weight: 700; color: var(--ta-primary); }
+
+/* ── Tables ──────────────────────────────────────────────────────────────── */
+.ta-table {
+    width: 1100px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+.ta-table th, .ta-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--ta-border);
+    text-align: right;
+}
+.ta-table th { background: var(--ta-light); font-weight: 600; }
+.ta-table tr:hover td { background: #f9f9fb; }
+
+/* ── Badges ──────────────────────────────────────────────────────────────── */
+.ta-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.ta-badge-pass     { background: #d4edda; color: #155724; }
+.ta-badge-repeat   { background: #fff3cd; color: #856404; }
+.ta-badge-critique { background: #cce5ff; color: #004085; }
+.ta-badge-pending  { background: var(--ta-light); color: var(--ta-gray); }
+.ta-badge-free     { background: #d4edda; color: #155724; }
+.ta-badge-used     { background: #f8d7da; color: #721c24; }
+.ta-badge-approved      { background: #d4edda; color: #155724; }
+.ta-badge-rejected      { background: #f8d7da; color: #721c24; }
+.ta-badge-pending_ta    { background: var(--ta-light); color: var(--ta-gray); }
+.ta-badge-under_review  { background: #fff3cd; color: #856404; }
+
+/* ── Group rows ─────────────────────────────────────────────────────────── */
+.ta-group-row {
+    padding: 6px 10px;
+    background: #fff;
+    border: 1px solid var(--ta-border);
+    border-radius: 4px;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+}
+.ta-group-row.ta-used { opacity: 0.6; }
+
+/* ── Inline Form ─────────────────────────────────────────────────────────── */
+.ta-form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+.ta-form-inline .ta-select,
+.ta-form-inline .ta-input { margin-bottom: 0; width: auto; }
+
+/* ── Grade Form ──────────────────────────────────────────────────────────── */
+.ta-grade-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+    background: #f9f9fb;
+    padding: 12px;
+    border-radius: 6px;
+}
+.ta-grade-form .ta-select,
+.ta-grade-form .ta-input { margin-bottom: 0; width: auto; }
+.ta-grade-form textarea { resize: vertical; min-height: 60px; }
+
+/* ── Student Portal ─────────────────────────────────────────────────────── */
+.ta-student-portal { direction: rtl; }
+
+.ta-pending-box {
+    background: #fff8e1;
+    border: 2px solid #fdcb6e;
+    border-radius: var(--ta-radius);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+}
+.ta-pending-box h3 { margin: 0 0 10px; color: #e17055; }
+
+.ta-pending-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.ta-pending-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ffeeba;
+}
+.ta-pending-list li:last-child { border-bottom: none; }
+
+.ta-pending-course {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.ta-pending-course small { color: var(--ta-gray); }
+
+#ta-bulk-actions{
+  display: none;
+ 
+}
+
+/* ── Capacity Form Improvements ───────────────────────────────────────────── */
+.ta-cap-form-section {}
+.ta-cap-form-header { margin-bottom: 12px; }
+.ta-cap-form-header h3 { margin-bottom: 6px; }
+.ta-cap-form-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.84rem;
+    color: #1e40af;
+    line-height: 1.5;
+}
+.ta-hint-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.ta-cap-form-card {
+    background: #fff;
+    border: 1px solid var(--ta-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.ta-cap-form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-end;
+}
+.ta-cap-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 130px;
+}
+.ta-cap-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+}
+.ta-cap-select { width: auto; min-width: 130px; }
+.ta-cap-field-num { min-width: 90px; }
+.ta-cap-num-input { width: 100px !important; text-align: center; font-weight: 600; font-size: 1rem; }
+.ta-cap-actions { min-width: auto; }
+.ta-cap-save-btn {
+    padding: 9px 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+.ta-cap-btn-icon { font-size: 1rem; }
+.ta-cap-course-hint {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    color: #0369a1;
+    margin-top: 2px;
+    display: none;
+}
+.ta-cap-course-hint.ta-cap-hint-group {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #166534;
+}
+
+/* ── Capacity Table Improvements ─────────────────────────────────────────── */
+.ta-type-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.ta-cap-num { text-align: center; }
+.ta-cap-progress {
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    margin-top: 4px;
+    overflow: hidden;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ta-cap-progress-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width .4s ease;
+}
+
+/* ── دکمه «دیدن استادیاران» — هم‌خط با تیتر ویجت، کوچک، سفید، آیکن سمت چپ ── */
+.ta-widget-header.ta-widget-header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+.ta-widget-header.ta-widget-header-flex h3 {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+.ta-meet-assistants-link {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row-reverse; /* آیکن را به سمت چپ متن می‌برد */
+    gap: 6px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    text-decoration: none;
+    color: #E85A24;
+    font-size: 12.5px;
+    line-height: 1.6;
+    white-space: nowrap;
+    transition: opacity .15s ease;
+}
+.ta-meet-assistants-link:hover {
+    opacity: .75;
+    color: #E85A24;
+}
+.ta-meet-assistants-icon {
+    display: inline-flex;
+    margin: 0;
+}
+.ta-meet-assistants-icon svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+.ta-meet-assistants-text {
+    white-space: nowrap;
+    font-weight: 500;
+}

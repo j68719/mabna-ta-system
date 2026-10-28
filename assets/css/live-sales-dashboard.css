@@ -1,0 +1,18 @@
+/* ── داشبورد — افزوده‌های اختصاصی ──────────────────────────────────────── */
+.sm-dashboard{ max-width:1400px; }
+
+/* رنگ‌بندی خودکار کارت‌های KPI طبق ترتیب */
+.sm-kpi-grid .sm-kpi-card:nth-child(1){ --sm-kpi-color:#3457d5; --sm-kpi-tint:#eef2ff; }
+.sm-kpi-grid .sm-kpi-card:nth-child(2){ --sm-kpi-color:#c8890a; --sm-kpi-tint:#fbf1de; }
+.sm-kpi-grid .sm-kpi-card:nth-child(3){ --sm-kpi-color:#e8890c; --sm-kpi-tint:#fef3e2; }
+.sm-kpi-grid .sm-kpi-card:nth-child(4){ --sm-kpi-color:#e0293e; --sm-kpi-tint:#fdecee; }
+
+/* نوتیف migration با ظاهر یکپارچه‌تر */
+.sm-dashboard .notice{ margin-top:4px; }
+
+/* دکمه به‌روزرسانی با آیکون در حال چرخش هنگام لود */
+#sm-refresh-stats.is-loading .sm-btn-icon{ display:inline-block;animation:sm-spin .7s linear infinite; }
+
+/* بخش قابل‌کلیک ردیف‌های نمودار میله‌ای فصل و توزیع سطح — می‌برند به گزارش مشتریان با همان فیلتر */
+.sm-dashboard .sm-bar-row-link{ flex:1;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;border-radius:6px;padding:4px 6px;margin-inline-start:-6px;transition:background .12s;min-width:0; }
+.sm-dashboard .sm-bar-row-link:hover{ background:var(--sm-bg,#f6f7f7); }

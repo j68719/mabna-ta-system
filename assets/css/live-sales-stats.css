@@ -1,0 +1,80 @@
+/* Season Manager Pro — آمار زنده فروش */
+
+.sm-sales-cat-picker-wrap{ position:relative; flex:0 0 320px; }
+.sm-sales-cat-picker-wrap .sm-search-input{ width:100%; }
+
+.sm-sales-province-bar:hover,
+.sm-sales-province-row:hover{ background:#f6f9ff; }
+
+.sm-sales-live-dot{
+    display:inline-block; width:8px; height:8px; border-radius:50%;
+    background:#00a32a; margin-inline-end:4px; vertical-align:middle;
+    animation:sm-sales-pulse 1.4s infinite;
+}
+@keyframes sm-sales-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(0,163,42,.5); }
+    70%{ box-shadow:0 0 0 6px rgba(0,163,42,0); }
+    100%{ box-shadow:0 0 0 0 rgba(0,163,42,0); }
+}
+
+.sm-sales-stats-page .sm-charts-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:20px; }
+.sm-sales-stats-page .sm-chart-card{ background:var(--sm-surface,#fff); border:1px solid var(--sm-border,#dcdcde); border-radius:8px; padding:16px 18px; }
+.sm-sales-stats-page .sm-history-section table thead th{ text-align:right; }
+
+@media (max-width:782px){
+    .sm-sales-cat-picker-wrap{ flex-basis:100%; }
+}
+
+/* ── آمار روز/ساعت/محصول: لیست بلندِ ردیف‌ها اسکرول بخورد نه اینکه صفحه را بی‌نهایت دراز کند ── */
+.sm-sales-stats-page .sm-scroll-chart{ max-height:340px; overflow-y:auto; padding-inline-end:4px; }
+/* عرض ثابت (نه min/max) تا نقطه‌ی شروعِ همه‌ی میله‌ها هم‌تراز باشد، فارغ از طول متن برچسب */
+.sm-sales-stats-page .sm-scroll-chart .sm-bar-label{ flex:0 0 180px; width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+/* ── آمار جمعیت‌شناختی سفارش‌ها: گرید کارت‌های کوچک، هر فیلد یک کارت مستقل ── */
+.sm-sales-stats-page .sm-mini-chart-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;
+}
+.sm-sales-stats-page .sm-mini-chart-card h4{ margin:0 0 12px; font-size:13px; }
+/* همین‌طور اینجا: عرض ثابت برای برچسب‌ها تا شروعِ نوارها در همه‌ی کارت‌ها هم‌تراز باشد */
+.sm-sales-stats-page .sm-mini-chart-card .sm-bar-label{ flex:0 0 96px; width:96px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+/* ── نمودار خطی محصولات (Chart.js) — باید position:relative داشته باشد تا responsive:true درست کار کند ── */
+.sm-sales-stats-page .sm-chart-canvas-wrap{ position:relative; width:100%; }
+
+/* ── چیپ‌های دسته‌بندی: نشانگر بارگذاری آمار برای دسته‌های تازه‌انتخاب‌شده ── */
+.sm-sales-cat-chip{ padding-inline-end:6px; }
+.sm-sales-chip-stat{
+    display:inline-flex; align-items:center; gap:4px;
+    font-weight:400; opacity:.85; font-size:11px;
+    padding-inline-start:2px; border-inline-start:1px solid rgba(34,113,177,.35); margin-inline-start:2px; padding-inline-start:6px;
+}
+.sm-sales-mini-spinner{
+    display:inline-block; width:11px; height:11px; flex-shrink:0;
+    border:2px solid rgba(34,113,177,.28); border-top-color:var(--sm-primary,#2271b1);
+    border-radius:50%; animation:sm-sales-spin .7s linear infinite;
+}
+@keyframes sm-sales-spin{ to{ transform:rotate(360deg); } }
+.sm-sales-chip-remove{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:none;border:none;cursor:pointer;padding:0;line-height:1;
+    color:var(--sm-primary,#2271b1);font-size:13px;font-weight:700;opacity:.7;
+    width:16px;height:16px;border-radius:50%;flex-shrink:0;
+}
+.sm-sales-chip-remove:hover{ opacity:1; background:rgba(34,113,177,.15); }
+
+/* ── لیست محصولات دسته‌بندی‌های انتخابی (زیر چیپ‌ها) ── */
+.sm-sales-product-panel{
+    margin-top:16px; padding-top:14px;
+    border-top:1px dashed var(--sm-border,#dcdcde);
+}
+.sm-sales-product-panel-header{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    margin-bottom:10px; font-weight:600; font-size:13px;
+}
+.sm-sales-product-list{
+    max-height:240px; overflow-y:auto;
+    border:1px solid var(--sm-border,#dcdcde); border-radius:6px;
+    padding:10px 12px; background:var(--sm-surface,#fff);
+}
+.sm-sales-product-list .sm-checkbox-item{ font-size:12.5px; }
+.sm-sales-product-list-empty{ color:var(--sm-gray,#8c8f94); font-size:12.5px; padding:4px 2px; }
